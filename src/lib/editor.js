@@ -5,11 +5,11 @@ function Editor(props) {
     let editor
 
     useEffect(() => {
-        editor = new Quill('.' + props.className, props.quillOptions)
+        editor = new Quill('#' + props.id, props.quillOptions)
         editor.on('text-change', function () {
             props.setEditor({
                 instance: editor,
-                text: editor.getText()
+                text: editor.root.innerHTML
             })
         })
 
@@ -17,7 +17,7 @@ function Editor(props) {
 
 
     return (
-        <div className={props.className}></div>
+        <div id={props.id}></div>
     )
 }
 

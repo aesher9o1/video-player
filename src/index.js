@@ -12,8 +12,8 @@ function Index() {
 
     const addTextToEditor = () => {
         var htmlToInsert = "<p>here is some <strong>awesome</strong> text</p>"
-        var editor = document.getElementsByClassName('someEditorClass')
-        editor[0].innerHTML = editor[0].innerHTML + htmlToInsert
+        var editor = document.querySelector('#editorID .ql-editor')
+        editor.innerHTML = editor.innerHTML + htmlToInsert
     }
     const onPlayerReady = (player) => {
         var Button = videojs.getComponent('Button');
@@ -52,11 +52,10 @@ function Index() {
             </div>
             <div>
                 <h1>Bookmarks</h1>
-                <Editor setEditor={setEditor} quillOptions={quillOptions} className={"someEditorClass"}></Editor>
+                <Editor setEditor={setEditor} quillOptions={quillOptions} id={"editorID"}></Editor>
             </div>
             <div>
                 {editor.text}
-                <button onClick={addTextToEditor}>Add</button>
             </div>
         </section>
     )
