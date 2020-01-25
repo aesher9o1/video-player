@@ -2,6 +2,7 @@ import React, { useState, useEffect, memo } from 'react'
 import videojs from 'video.js'
 import PropTypes from 'prop-types';
 import Controls from './controls.json'
+import './video.css'
 require('videojs-http-source-selector')
 require('videojs-contrib-quality-levels')
 
@@ -15,6 +16,8 @@ function Video(props) {
     useEffect(() => {
         init_player()
         init_player_events()
+
+        player.removeAttribute("controls")
 
 
         return (() => {
@@ -68,7 +71,9 @@ function Video(props) {
         player.on('ended', () => {
             props.onEnd();
         });
+
     }
+
 
     const generate_player_options = () => {
         const playerOptions = {};
@@ -93,7 +98,7 @@ function Video(props) {
 
 
     return (
-        <video id={playerId} className={`video-js ${props.bigPlayButtonCentered ? 'vjs-big-play-centered' : ''} ${props.className}`}></video>
+        <video id={playerId} className={props.className}></video>
     )
 }
 
@@ -115,6 +120,7 @@ Video.propTypes = {
     onTimeUpdate: PropTypes.func,
     onSeeking: PropTypes.func,
     onSeeked: PropTypes.func,
+    fluid: PropTypes.bool,
     onEnd: PropTypes.func,
     playbackRates: PropTypes.arrayOf(PropTypes.number),
     hidePlaybackRates: PropTypes.bool,
@@ -130,6 +136,7 @@ Video.defaultProps = {
     playbackRates: [0.5, 1, 1.5, 2],
     hidePlaybackRates: false,
     className: "",
+    fluid: true,
     hideControls: [],
     bigPlayButton: true,
     bigPlayButtonCentered: false,

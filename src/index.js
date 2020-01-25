@@ -20,7 +20,9 @@ function Index() {
         var BookMarkButton = videojs.extend(Button, {
             constructor: function () {
                 Button.apply(this, arguments);
-                /* initialize your button */
+                this.setAttribute('title', "Set Bookmark");
+                this.addClass('fa')
+                this.addClass('fa-bookmark');
             },
             handleClick: function () {
                 addTextToEditor()
@@ -33,8 +35,6 @@ function Index() {
     const videoJsOptions = {
         controls: true,
         src: "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8",
-        width: "640",
-        height: "264",
         onReady: onPlayerReady.bind(this)
     }
 
@@ -54,18 +54,19 @@ function Index() {
             </div>
             <div className="row">
                 <div className="col mt-4">
-                    <Video {...videoJsOptions} />
+                    <Video {...videoJsOptions} className="video-js vjs-fluid vjs-16-9 vjs-big-play-centered" />
                 </div>
 
             </div>
             <div className="row mt-4">
-                <div className="col-8">
+                <div className="col">
                     <Editor setEditor={setEditor} quillOptions={quillOptions} id={"editorID"}></Editor>
                 </div>
                 <div className="col">
                     {editor.text}
                 </div>
             </div>
+            <div className="row" style={{ height: "150px" }}></div>
         </div>
 
     )
