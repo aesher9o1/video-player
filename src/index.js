@@ -46,18 +46,28 @@ function Index() {
     };
 
     return (
-        <section>
-            <div>
-                <Video {...videoJsOptions} />
+        <div className="container">
+            <div className="row mt-4 border-bottom">
+                <div className="col">
+                    <h2>Video js with ABR and HLS support Paired with Quill brewed with ♥</h2>
+                </div>
             </div>
-            <div>
-                <h1>Bookmarks</h1>
-                <Editor setEditor={setEditor} quillOptions={quillOptions} id={"editorID"}></Editor>
+            <div className="row">
+                <div className="col mt-4">
+                    <Video {...videoJsOptions} />
+                </div>
+
             </div>
-            <div>
-                {editor.text}
+            <div className="row mt-4">
+                <div className="col-8">
+                    <Editor setEditor={setEditor} quillOptions={quillOptions} id={"editorID"}></Editor>
+                </div>
+                <div className="col">
+                    {editor.text}
+                </div>
             </div>
-        </section>
+        </div>
+
     )
 }
 
