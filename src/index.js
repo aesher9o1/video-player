@@ -6,15 +6,10 @@ import Editor from './lib/editor'
 function Index() {
     const [editor, setEditor] = useState({
         instance: null,
-        text: "Nothing yet."
+        text: "Start typing on editor to make notes, Add bookmark through video"
     })
 
 
-    const addTextToEditor = () => {
-        var htmlToInsert = "<p>here is some <strong>awesome</strong> text</p>"
-        var editor = document.querySelector('#editorID .ql-editor')
-        editor.innerHTML = editor.innerHTML + htmlToInsert
-    }
     const onPlayerReady = (player) => {
         var Button = videojs.getComponent('Button');
         var BookMarkButton = videojs.extend(Button, {
@@ -25,7 +20,9 @@ function Index() {
                 this.addClass('fa-bookmark');
             },
             handleClick: function () {
-                addTextToEditor()
+                var htmlToInsert = `<strong><a href="${document.URL}${player.currentTime()}">Bookmark at ${player.currentTime()}</a><strong>`
+                var editor = document.querySelector('#editorID .ql-editor')
+                editor.innerHTML = editor.innerHTML + htmlToInsert
             }
         });
         videojs.registerComponent('BookMarkButton', BookMarkButton);
