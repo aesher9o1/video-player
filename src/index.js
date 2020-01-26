@@ -14,24 +14,24 @@ function Index() {
         var Button = videojs.getComponent('Button');
         var BookMarkButton = videojs.extend(Button, {
             constructor: function () {
-                Button.apply(this, arguments);
-                this.setAttribute('title', "Set Bookmark");
+                Button.apply(this, arguments)
+                this.setAttribute('title', "Set Bookmark")
                 this.addClass('fa')
-                this.addClass('fa-bookmark');
+                this.addClass('fa-bookmark')
             },
             handleClick: function () {
-                var htmlToInsert = `<strong><a href="${document.URL}${player.currentTime()}">Bookmark at ${player.currentTime()}</a><strong>`
+                var htmlToInsert = `<strong><a href="${document.URL}?goto=${player.currentTime()}">Bookmark at ${player.currentTime()}</a><strong>`
                 var editor = document.querySelector('#editorID .ql-editor')
                 editor.innerHTML = editor.innerHTML + htmlToInsert
             }
         });
         videojs.registerComponent('BookMarkButton', BookMarkButton);
-        player.getChild('controlBar').addChild('BookMarkButton', {});
+        player.getChild('controlBar').addChild('BookMarkButton', {})
     }
 
     const videoJsOptions = {
         controls: true,
-        src: "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8",
+        src: "https://firebasestorage.googleapis.com/v0/b/internshala-video-player-demo.appspot.com/o/master.m3u8?alt=media&token=1c138a6f-4531-4753-99a3-d3401253a4c1",
         onReady: onPlayerReady.bind(this)
     }
 
@@ -46,7 +46,7 @@ function Index() {
         <div className="container">
             <div className="row mt-4 border-bottom">
                 <div className="col">
-                    <h2>Video js with ABR and HLS support Paired with Quill brewed with ♥</h2>
+                    <h2>Video js with ABR and HLS support Paired with Quill brewed with 🧡</h2>
                 </div>
             </div>
             <div className="row">
@@ -69,4 +69,4 @@ function Index() {
     )
 }
 
-export default Index;
+export default Index
