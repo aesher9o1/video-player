@@ -45,8 +45,9 @@ function Index() {
     return (
         <div className="container">
             <div className="row mt-4 border-bottom">
-                <div className="col">
+                <div className="col text-center">
                     <h2>Video js with ABR and HLS support Paired with Quill brewed with 🧡</h2>
+                    <a href="https://github.com/aesher9o1/video-player" className="mx-auto">Check out on Github</a>
                 </div>
             </div>
             <div className="row">
